@@ -20,13 +20,15 @@ public class FlockManager : MonoBehaviour {
         var newQueen = followers[Random.Range(0, followers.Count)];
         followers.Remove(newQueen);
         queen=newQueen.gameObject;
-        Destroy(newQueen);
         queen.transform.parent = this.transform;
-        queen.AddComponent<FlockQueen>();
+        var flockQueen=queen.AddComponent<FlockQueen>();
         queen.GetComponent<MeshRenderer>().material = queenMaterial;
         queen.name = "queen";
+        flockQueen.maxSpeed = newQueen.maxSpeed;
+        Destroy(newQueen);
+
     }
-	void Update () {
+    void Update () {
 		
 	}
 

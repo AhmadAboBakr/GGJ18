@@ -9,10 +9,12 @@ public class Boid : MonoBehaviour {
     public float maxDistanceFromSwarm = 4;
     private Vector3 dir;
     Rigidbody rigidBody;
+    public float offset = 0;
     // Use this for initialization
     void Start () {
         rigidBody = this.GetComponent<Rigidbody>();
         target.followers.Add(this);
+        maxSpeed+= Random.Range(-5,5f);
 	}
 	
 	// Update is called once per frame
@@ -28,7 +30,7 @@ public class Boid : MonoBehaviour {
         }
         
         rigidBody.AddForce(dir ,ForceMode.Impulse);
-
+        this.transform.forward = this.rigidBody.velocity;
 	}
     private Vector3 Seperate()
     {
