@@ -7,7 +7,7 @@ public class InceptionObject : MonoBehaviour {
     GameObject lastOne;
     Rigidbody[] bodies;
     Rigidbody body;
-    Vector3 downVector;
+    public Vector3 downVector;
     public LayerMask layer;
     public bool grounded = false;
     // Use this for initialization
@@ -54,6 +54,10 @@ public class InceptionObject : MonoBehaviour {
 
                 this.transform.LookAt(collision.gameObject.transform.position, collision.transform.up);
             }
+        }
+        else if(collision.collider.CompareTag("Bouncy"))
+        {
+            this.transform.forward = -this.transform.forward;
 
         }
     }
