@@ -38,7 +38,8 @@ public class MultipleTargetFollow : MonoBehaviour {
 
         Move();
         Zoom();
- 
+
+        makeShitInvisible();
     }
 
     void Zoom()
@@ -91,5 +92,27 @@ public class MultipleTargetFollow : MonoBehaviour {
         }
         return bounds.center;
     }
+    
+    void makeShitInvisible()
+    {
+        for (int i = 0; i < targets.Count; i++)
+        {
+            Ray myRay = new Ray(Camera.main.transform.position, targets[i].transform.position - Camera.main.transform.position);
+            RaycastHit hitInfo;
+            if(Physics.Raycast(myRay, out hitInfo, 999f, 1<<9))
+            {
+                Material[] materials = hitInfo.collider.gameObject.GetComponent<Renderer>().materials;
+                foreach (Material thisMaterial in materials)
+                {
+                    Color tempColor = thisMaterial.color;
+                    tempColor.a = 0.2f;
+                    thisMaterial.color = tempColor;
+                   
+                }
 
+                hitInfo.collider.gameObject.GetComponent<Renderer>().materials = materials;
+            }
+        }
+        
+    }
 }
