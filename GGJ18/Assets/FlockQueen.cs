@@ -40,8 +40,8 @@ public class FlockQueen : MonoBehaviour {
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(this.transform.position,this.transform.position+this.rigidBody.velocity);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawLine(this.transform.position,this.transform.position+this.rigidBody.velocity);
+    //}
 }
