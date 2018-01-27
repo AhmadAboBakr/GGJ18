@@ -58,12 +58,12 @@ public class Boid : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        Vector2 xz = new Vector2(rigidBody.velocity.x, rigidBody.velocity.z);
-        if (xz.sqrMagnitude > maxSpeed)
+        //Vector2 xz = new Vector2(rigidBody.velocity.x, rigidBody.velocity.z);
+        if (this.rigidBody.velocity.sqrMagnitude > maxSpeed)
         {
-            xz = xz.normalized * maxSpeed;
-            Vector3 velocity = new Vector3(xz.x,rigidBody.velocity.y,xz.y);
-            rigidBody.velocity = velocity;
+            rigidBody.velocity = rigidBody.velocity.normalized * maxSpeed;
+            //Vector3 velocity = new Vector3(xz.x, rigidBody.velocity.y, xz.y);
+            //rigidBody.velocity = velocity;
         }
 
     }
