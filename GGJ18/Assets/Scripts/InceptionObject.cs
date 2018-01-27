@@ -51,8 +51,8 @@ public class InceptionObject : MonoBehaviour {
             {
                 lastOne = collision.collider.gameObject;
                 downVector = -collision.collider.transform.up;
-                float angle = Vector3.SignedAngle(this.transform.up, collision.transform.up, this.transform.right);
-                this.transform.Rotate(this.transform.right, angle, Space.World);
+
+                this.transform.LookAt(collision.gameObject.transform.position, collision.transform.up);
             }
 
         }
