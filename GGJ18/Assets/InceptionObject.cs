@@ -8,10 +8,12 @@ public class InceptionObject : MonoBehaviour {
     Rigidbody[] bodies;
     Rigidbody body;
     Vector3 downVector;
+    public LayerMask layer;
+    public bool grounded = false;
     // Use this for initialization
 	void Start () {
         downVector = Vector3.down;
-        bodies = this.GetComponents<Rigidbody>();
+        bodies = this.GetComponentsInChildren<Rigidbody>();
         i = 0;
         body = this.GetComponent<Rigidbody>();
         
@@ -19,15 +21,22 @@ public class InceptionObject : MonoBehaviour {
 
     void FixedUpdate()
     {
-        //bodies[i].velocity += gravity * downVector;
-        //i++;
-        //if (i > bodies.Length) i = 0;
+
         body.velocity += gravity * downVector;
     }
     int i;
     private void Update()
-    {        
-
+    {
+        Ray ray = new Ray(this.transform.position,downVector);
+        if(Physics.Raycast(ray, 3f, layer))
+        {
+            grounded = true;
+        }
+        else
+        {
+            grounded = false;
+        }
+        
     }
     private void OnDrawGizmos()
     {
@@ -36,12 +45,21 @@ public class InceptionObject : MonoBehaviour {
     }
     private void OnCollisionEnter(Collision collision)
     {
-
-        if (collision.collider.gameObject !=lastOne&& collision.collider.CompareTag("Ground"))
+        if (collision.collider.CompareTag("Ground"))
         {
-            lastOne = collision.collider.gameObject;
-            downVector = -collision.collider.transform.up;
-            this.transform.up = collision.collider.transform.up;
+            if (collision.collider.gameObject != lastOne)
+            {
+                lastOne = collision.collider.gameObject;
+                downVector = -collision.collider.transform.up;
+                float angle = Vector3.SignedAngle(this.transform.up, collision.transform.up, this.transform.right);
+                this.transform.Rotate(this.transform.right, angle, Space.World);
+            }
+
         }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+
+
     }
 }

@@ -5,12 +5,14 @@ using UnityEngine;
 public class FlockQueen : MonoBehaviour {
     Rigidbody rigidBody;
     public float maxSpeed;
+    InceptionObject inception;
 	// Use this for initialization
 	void Start () {
         rigidBody = this.GetComponent<Rigidbody>();
         rigidBody.mass = 2000;
         this.rigidBody.freezeRotation = true;
         this.maxSpeed = 13;
+        inception = this.GetComponent<InceptionObject>();
     }
 
     // Update is called once per frame
@@ -26,18 +28,16 @@ public class FlockQueen : MonoBehaviour {
         {
             direction++;
         }
-        this.transform.Rotate(this.transform.up, direction*5);
-        this.rigidBody.AddForce(this.transform.forward*100000);
+        this.transform.Rotate(this.transform.up, direction*5, Space.World);
+        if (inception.grounded)
+        {
+            this.rigidBody.velocity = (this.transform.forward) * maxSpeed;
+        }
     }
     private void FixedUpdate()
     {
         //Vector2 xz = new Vector2(rigidBody.velocity.x, rigidBody.velocity.z);
-        if (this.rigidBody.velocity.sqrMagnitude > maxSpeed)
-        {
-            rigidBody.velocity = rigidBody.velocity.normalized * maxSpeed;
-            //Vector3 velocity = new Vector3(xz.x, rigidBody.velocity.y, xz.y);
-            //rigidBody.velocity = velocity;
-        }
+        //this.rigidBody.velocity = Vector3.ClampMagnitude(this.rigidBody.velocity,maxSpeed);
     }
 
     private void OnDrawGizmos()
