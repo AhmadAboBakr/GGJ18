@@ -11,7 +11,7 @@ public class HumanLeader : MonoBehaviour {
         rigidBody = this.GetComponent<Rigidbody>();
         rigidBody.mass = 1000;
         this.rigidBody.freezeRotation = true;
-        this.maxSpeed = 20;
+        this.maxSpeed = 15;
         inception = this.GetComponent<InceptionObject>();
     }
 

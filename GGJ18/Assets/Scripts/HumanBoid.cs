@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HumanBoid : MonoBehaviour {
+    public HumanManager manager;
     public GameObject target;
     public Vector3 startingDirection;
     //starting direction will be towards player if it works
@@ -11,7 +12,7 @@ public class HumanBoid : MonoBehaviour {
     new Vector3 generalDirection;
     public List<GameObject> neighbors = new List<GameObject>();
     public float speed;
-    public float maxSpeed = 10;
+    public float maxSpeed = 15;
     public float targetBias, separationBias, cohesionBias, alignmentBias, ArrivalBias;
     public float slowingRadius;
 
@@ -22,6 +23,7 @@ public class HumanBoid : MonoBehaviour {
         startingDirection = new Vector3(Random.Range(1, 3),0, Random.Range(1, 3));
         //myRigidbody.velocity = startingDirection * speed;
         maxSpeed += Random.Range(-5, 5);
+        manager.followers.Add(this);
     }
 
     private void FixedUpdate()
@@ -39,14 +41,14 @@ public class HumanBoid : MonoBehaviour {
     Vector3 SeekTarget()
     {
         Vector3 tempVector = Vector3.zero;
-        tempVector = ((target.transform.position - this.transform.position)*speed).normalized;
+        tempVector = ((manager.leader.transform.position - this.transform.position)*speed).normalized;
         return tempVector;
     }
 
     float Arrival()
     {
         Vector3 desired_velocity = myRigidbody.velocity;
-        float distance = Vector3.Distance(target.transform.position, this.transform.position);
+        float distance = Vector3.Distance(manager.leader.transform.position, this.transform.position);
 
         // Check the distance to detect whether the character
         // is inside the slowing area

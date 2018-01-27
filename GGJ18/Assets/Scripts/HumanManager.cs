@@ -21,8 +21,8 @@ public class HumanManager : MonoBehaviour {
         followers.Remove(newLeader);
         leader=newLeader.gameObject;
         leader.transform.parent = this.transform;
-        var groupLeader = leader.AddComponent<FlockQueen>();
-        //leader.GetComponentInChildren<SkinnedMeshRenderer>().material = queenMaterial;
+        var groupLeader = leader.AddComponent<HumanLeader>();
+        leader.GetComponentInChildren<SkinnedMeshRenderer>().material = leaderMaterial;
         leader.name = "Leader";
         groupLeader.maxSpeed = newLeader.maxSpeed;
         Destroy(newLeader);

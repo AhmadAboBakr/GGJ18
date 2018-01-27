@@ -5,7 +5,7 @@ using UnityEngine;
 public class Boid : MonoBehaviour {
     public FlockManager manager;
     public float minDistacne;
-    public float maxSpeed = 10;
+    public float maxSpeed = 15;
     public float maxDistanceFromSwarm = 4;
     private Vector3 dir;
     Rigidbody rigidBody;

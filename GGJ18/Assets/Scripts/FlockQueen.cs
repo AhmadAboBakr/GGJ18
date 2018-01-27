@@ -11,7 +11,7 @@ public class FlockQueen : MonoBehaviour {
         rigidBody = this.GetComponent<Rigidbody>();
         rigidBody.mass = 2000;
         this.rigidBody.freezeRotation = true;
-        this.maxSpeed = 13;
+        this.maxSpeed = 15;
         inception = this.GetComponent<InceptionObject>();
     }
 
