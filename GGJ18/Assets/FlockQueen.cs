@@ -26,19 +26,18 @@ public class FlockQueen : MonoBehaviour {
         {
             direction++;
         }
-        this.transform.Rotate(0, direction*5, 0);
+        this.transform.Rotate(this.transform.up, direction*5);
         this.rigidBody.AddForce(this.transform.forward*100000);
     }
     private void FixedUpdate()
     {
-        Vector2 xz = new Vector2(rigidBody.velocity.x, rigidBody.velocity.z);
-        if (xz.sqrMagnitude > maxSpeed)
+        //Vector2 xz = new Vector2(rigidBody.velocity.x, rigidBody.velocity.z);
+        if (this.rigidBody.velocity.sqrMagnitude > maxSpeed)
         {
-            xz = xz.normalized * maxSpeed;
-            Vector3 velocity = new Vector3(xz.x, rigidBody.velocity.y, xz.y);
-            rigidBody.velocity = velocity;
+            rigidBody.velocity = rigidBody.velocity.normalized * maxSpeed;
+            //Vector3 velocity = new Vector3(xz.x, rigidBody.velocity.y, xz.y);
+            //rigidBody.velocity = velocity;
         }
-        Debug.Log(rigidBody.velocity);
     }
 
     private void OnDrawGizmos()
