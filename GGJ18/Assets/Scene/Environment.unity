@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 2
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465781, g: 0.49641454, b: 0.57481575, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028456, g: 0.22571559, b: 0.30692273, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3837,6 +3837,7 @@ GameObject:
   - component: {fileID: 671055543}
   - component: {fileID: 671055542}
   - component: {fileID: 671055546}
+  - component: {fileID: 671055547}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3876,19 +3877,19 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 35
+  field of view: 25.4
   orthographic: 0
   orthographic size: 45.82149
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -3922,10 +3923,22 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   startingPlayers: []
   smoothTime: 0.5
-  maxZoom: 8
-  minZoom: 35
+  maxZoom: 5
+  minZoom: 25
   zoomLimiter: 50
   newPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &671055547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 671055541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: ad056e8451172864cbb230d8942c0234, type: 2}
 --- !u!1 &671957233 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1057895856834174, guid: 9cd0d63c00917b04996697e2d04fad0b,
@@ -9906,8 +9919,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.8897059, g: 0.8054583, b: 0.57569206, a: 1}
+  m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -9939,13 +9952,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1611609958}
-  m_LocalRotation: {x: 0.36810032, y: 0.44525436, z: -0.2076255, w: 0.7893937}
+  m_LocalRotation: {x: 0.36664185, y: 0.4507545, z: -0.21019022, w: 0.7862661}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 50, y: 58.85, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: 59.65, z: 0}
 --- !u!1 &1612653664 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1057895856834174, guid: 9cd0d63c00917b04996697e2d04fad0b,
