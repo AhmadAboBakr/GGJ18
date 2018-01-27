@@ -6,25 +6,33 @@ public class InceptionObject : MonoBehaviour {
     public float gravity;
     GameObject lastOne;
     Rigidbody[] bodies;
+    Rigidbody body;
     Vector3 downVector;
-    Rigidbody rigBody;
     // Use this for initialization
 	void Start () {
         downVector = Vector3.down;
-        rigBody = this.GetComponent<Rigidbody>();
-        if (!rigBody)
-            rigBody = this.gameObject.AddComponent<Rigidbody>();
+        bodies = this.GetComponents<Rigidbody>();
+        i = 0;
+        body = this.GetComponent<Rigidbody>();
+        
 	}
 
     void FixedUpdate()
     {
-        rigBody.velocity += gravity * downVector;
+        //bodies[i].velocity += gravity * downVector;
+        //i++;
+        //if (i > bodies.Length) i = 0;
+        body.velocity += gravity * downVector;
     }
+    int i;
+    private void Update()
+    {        
 
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(this.transform.position,this.transform.position+downVector);
+        Gizmos.DrawLine(this.transform.position,this.transform.position+downVector*10);
     }
     private void OnCollisionEnter(Collision collision)
     {
