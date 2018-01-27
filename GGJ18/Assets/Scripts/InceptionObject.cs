@@ -27,15 +27,16 @@ public class InceptionObject : MonoBehaviour {
     int i;
     private void Update()
     {
+        grounded = true;
         Ray ray = new Ray(this.transform.position,downVector);
-        if(Physics.Raycast(ray, 3f, layer))
-        {
-            grounded = true;
-        }
-        else
-        {
-            grounded = false;
-        }
+        //if(Physics.Raycast(ray, 3f, layer))
+        //{
+        //    grounded = true;
+        //}
+        //else
+        //{
+        //    grounded = false;
+        //}
         
     }
     private void OnDrawGizmos()
