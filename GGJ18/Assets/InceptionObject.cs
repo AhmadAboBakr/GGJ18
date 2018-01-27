@@ -5,7 +5,7 @@ using UnityEngine;
 public class InceptionObject : MonoBehaviour {
     public float gravity;
     GameObject lastOne;
-
+    Rigidbody[] bodies;
     Vector3 downVector;
     Rigidbody rigBody;
     // Use this for initialization

@@ -22,7 +22,7 @@ public class FlockManager : MonoBehaviour {
         queen=newQueen.gameObject;
         queen.transform.parent = this.transform;
         var flockQueen=queen.AddComponent<FlockQueen>();
-        queen.GetComponent<MeshRenderer>().material = queenMaterial;
+        queen.GetComponentInChildren<SkinnedMeshRenderer>().material = queenMaterial;
         queen.name = "queen";
         flockQueen.maxSpeed = newQueen.maxSpeed;
         Destroy(newQueen);
