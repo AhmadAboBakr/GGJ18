@@ -32,9 +32,8 @@ public class InceptionObject : MonoBehaviour {
         if (collision.collider.gameObject !=lastOne&& collision.collider.CompareTag("Ground"))
         {
             lastOne = collision.collider.gameObject;
-            var normal = collision.contacts[0].normal;
-            downVector = -normal;
-            this.transform.up = -normal;
+            downVector = -collision.collider.transform.up;
+            this.transform.up = collision.collider.transform.up;
         }
     }
 }
