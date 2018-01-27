@@ -57,9 +57,5 @@ public class InceptionObject : MonoBehaviour {
 
         }
     }
-    private void OnCollisionExit(Collision collision)
-    {
 
-
-    }
 }
