@@ -32,6 +32,7 @@ public class ZombieFlockManager : MonoBehaviour {
         var flockQueen=queen.AddComponent<FlockQueen>();
         queen.GetComponentInChildren<SkinnedMeshRenderer>().material = queenMaterial;
         queen.name = "queen";
+        queen.tag = "Leader";
         flockQueen.maxSpeed = newQueen.maxSpeed;
         Destroy(newQueen);
     }
