@@ -14,13 +14,19 @@ public class ZombieBoid : MonoBehaviour {
     Animator animator;
     // Use this for initialization
     void Start () {
-        rigidBody = this.GetComponent<Rigidbody>();
-        manager.followers.Add(this);
-        maxSpeed+= Random.Range(-5,5f);
-        inceptionObject = this.GetComponent<InceptionObject>();
-        animator = this.GetComponentInChildren<Animator>();
-        rigidBody.freezeRotation = true;
-        inceptionObject.dead = false;
+        if (!manager)
+        {
+            manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<ZombieFlockManager>();
+
+
+            rigidBody = this.GetComponent<Rigidbody>();
+            manager.followers.Add(this);
+            maxSpeed += Random.Range(-5, 5f);
+            inceptionObject = this.GetComponent<InceptionObject>();
+            animator = this.GetComponentInChildren<Animator>();
+            rigidBody.freezeRotation = true;
+            inceptionObject.dead = false;
+        }
 
 
     }

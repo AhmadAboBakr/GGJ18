@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Bouncy
   - Leader
+  - Manager
   layers:
   - Default
   - TransparentFX

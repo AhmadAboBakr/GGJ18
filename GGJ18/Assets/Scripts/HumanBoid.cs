@@ -18,12 +18,16 @@ public class HumanBoid : MonoBehaviour {
 
     private void Start()
     {
-        
-        myRigidbody = this.GetComponent<Rigidbody>();
-        startingDirection = new Vector3(Random.Range(1, 3),0, Random.Range(1, 3));
-        //myRigidbody.velocity = startingDirection * speed;
-        maxSpeed += Random.Range(-5, 5);
-        manager.followers.Add(this);
+        if (!manager)
+        {
+            manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<HumanManager>();
+
+            myRigidbody = this.GetComponent<Rigidbody>();
+            startingDirection = new Vector3(Random.Range(1, 3), 0, Random.Range(1, 3));
+            //myRigidbody.velocity = startingDirection * speed;
+            maxSpeed += Random.Range(-5, 5);
+            manager.followers.Add(this);
+        }
     }
 
     private void FixedUpdate()
