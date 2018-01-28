@@ -28,7 +28,7 @@ public class FlockQueen : MonoBehaviour {
         {
             direction++;
         }
-        this.transform.Rotate(this.transform.up, direction*5, Space.World);
+        this.transform.Rotate(this.transform.up, direction*2, Space.World);
         if (inception.grounded)
         {
             this.rigidBody.velocity = (this.transform.forward) * maxSpeed;
