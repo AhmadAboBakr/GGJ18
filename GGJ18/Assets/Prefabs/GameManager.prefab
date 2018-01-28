@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followers: []
-  queenMaterial: {fileID: 0}
-  zoombieMaterial: {fileID: 0}
+  queenMaterial: {fileID: 2100000, guid: ab8606f706976844f86464330265b6df, type: 2}
+  zoombieMaterial: {fileID: 2100000, guid: 325856e1af7eb27499521f08a4966ded, type: 2}
   queen: {fileID: 0}
   maxKillTimer: 20
   time: 5
