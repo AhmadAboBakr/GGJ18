@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boid : MonoBehaviour {
-    public FlockManager manager;
+public class ZombieBoid : MonoBehaviour {
+    public ZombieFlockManager manager;
     public float minDistacne;
     public float maxSpeed = 15;
     public float maxDistanceFromSwarm = 4;
@@ -58,16 +58,22 @@ public class Boid : MonoBehaviour {
         return vec;
     }
 
-
+    public void Kill()
+    {
+        this.inceptionObject.downVector = Vector3.down;
+        this.inceptionObject.gravity = 3;
+        this.enabled = false;
+    }
     private void FixedUpdate()
     {
-        //Vector2 xz = new Vector2(rigidBody.velocity.x, rigidBody.velocity.z);
         if (this.rigidBody.velocity.sqrMagnitude > maxSpeed)
         {
             rigidBody.velocity = rigidBody.velocity.normalized * maxSpeed;
-            //Vector3 velocity = new Vector3(xz.x, rigidBody.velocity.y, xz.y);
-            //rigidBody.velocity = velocity;
         }
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        
     }
 }
