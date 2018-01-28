@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicHuman : MonoBehaviour {
-
+    public Material zm, hm;
     bool flag = false;
+    
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.CompareTag("Zombie") && !flag)
@@ -12,7 +13,7 @@ public class BasicHuman : MonoBehaviour {
             this.GetComponent<Collider>().gameObject.tag = "Zombie";
             this.GetComponent<Collider>().gameObject.name = "ZombieNow";
 
-            print("col: " + col.gameObject.tag);
+            //print("col: " + col.gameObject.tag);
 
             AddZombieComp();
             flag = true;
@@ -22,7 +23,7 @@ public class BasicHuman : MonoBehaviour {
             this.GetComponent<Collider>().gameObject.tag = "Player";
             this.GetComponent<Collider>().gameObject.name = "HumanNow";
             
-            print("col: " + col.gameObject.tag);
+            //print("col: " + col.gameObject.tag);
 
             AddHumanComp();
             flag = true;
@@ -35,7 +36,8 @@ public class BasicHuman : MonoBehaviour {
         {
             ZombieBoid zombieScript = this.gameObject.AddComponent<ZombieBoid>();
             zombieScript.enabled = true;
-
+            //this.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = zm;
+            this.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load("zombie") as Material;
         }
     }
     void AddHumanComp()

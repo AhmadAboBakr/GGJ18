@@ -6,7 +6,8 @@ public class WinLossCondition : MonoBehaviour {
 
     ZombieFlockManager zombieManager;
     HumanManager humanManager;
-
+    GameObject[] humans;
+    
     private void Start()
     {
         zombieManager = this.gameObject.GetComponent<ZombieFlockManager>();
@@ -15,14 +16,23 @@ public class WinLossCondition : MonoBehaviour {
 
     private void Update()
     {
-        if(zombieManager.followers.Count == 0 && humanManager.followers.Count >0)
+        Debug.Log(zombieManager.followers.Count);
+        
+        humans = GameObject.FindGameObjectsWithTag("Player");
+        //Debug.Log(humans.Length);
+        if (zombieManager.followers.Count == 0)
         {
+            Debug.Log("Zombies Lose");
             //humans win
         }
-        else if (humanManager.followers.Count == 0)
+        else if (humans.Length<=0)
         {
             //zombies win
             //Doesn't put into consideration neutral humans
+            //Debug.Log("Zombies WIN");
         }
+
+        
+       
     }
 }

@@ -1221,6 +1221,7 @@ MonoBehaviour:
   alignmentBias: 1
   ArrivalBias: 1
   slowingRadius: 50
+  zm: {fileID: 2100000, guid: 325856e1af7eb27499521f08a4966ded, type: 2}
 --- !u!114 &114832061065589066
 MonoBehaviour:
   m_ObjectHideFlags: 1

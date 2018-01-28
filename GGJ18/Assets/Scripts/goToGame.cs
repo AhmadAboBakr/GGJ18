@@ -8,7 +8,7 @@ public class goToGame : MonoBehaviour {
     public void GoToNextLevel()
     {
         SceneManager.LoadScene(1);
-
+        
     }
 	// Use this for initialization
 	void Start () {

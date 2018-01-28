@@ -82,6 +82,7 @@ public class ZombieBoid : MonoBehaviour {
         rigidBody.drag = 5;
         rigidBody.angularDrag = 5;
         this.gameObject.tag = "dead";   
+        
         inceptionObject.dead = true;
 
     }

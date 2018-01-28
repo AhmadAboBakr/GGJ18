@@ -9,6 +9,7 @@ TagManager:
   - Leader
   - Manager
   - dead
+  - Zombie
   layers:
   - Default
   - TransparentFX

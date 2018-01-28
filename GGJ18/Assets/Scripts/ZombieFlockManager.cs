@@ -41,7 +41,9 @@ public class ZombieFlockManager : MonoBehaviour {
         yield return new WaitForSeconds(maxKillTimer / (followers.Count));
         while (followers.Count>0)
         {
-            followers[Random.Range(0, followers.Count)].Kill();
+            int r = Random.Range(0, followers.Count);
+            followers[r].Kill();
+            followers.RemoveAt(r);
             yield return new WaitForSeconds(maxKillTimer/(followers.Count));
         }
         var io=queen.GetComponent<InceptionObject>(); ;
