@@ -6,6 +6,7 @@ public class HumanLeader : MonoBehaviour {
     Rigidbody rigidBody;
     public float maxSpeed;
     InceptionObject inception;
+    public float jumpForce = 400;
 	// Use this for initialization
 	void Start () {
         rigidBody = this.GetComponent<Rigidbody>();
@@ -34,9 +35,19 @@ public class HumanLeader : MonoBehaviour {
             this.rigidBody.velocity = (this.transform.forward) * maxSpeed;
         }
     }
-    private void FixedUpdate()
+    //private void FixedUpdate()
+    //{
+    //    Jump();
+
+    //}
+
+    void Jump()
     {
 
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            this.rigidBody.AddForce(-this.inception.downVector * jumpForce, ForceMode.Impulse);
+        }
 
     }
 }
