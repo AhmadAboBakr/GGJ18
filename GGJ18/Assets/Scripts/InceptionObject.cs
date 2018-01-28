@@ -28,7 +28,7 @@ public class InceptionObject : MonoBehaviour {
     private void Update()
     {
         grounded = true;
-        Ray ray = new Ray(this.transform.position,downVector);
+        //Ray ray = new Ray(this.transform.position,downVector);
         //if(Physics.Raycast(ray, 3f, layer))
         //{
         //    grounded = true;

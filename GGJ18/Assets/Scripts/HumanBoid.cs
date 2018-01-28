@@ -135,14 +135,10 @@ public class HumanBoid : MonoBehaviour {
         }
     }
     
-    void updateNeighborCount()
+    void UpdateNeighborCount()
     {
         neighborCount = neighbors.Count;
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.DrawLine(this.gameObject.transform.position, -this.myRigidbody.velocity);
-    //}
    
 }
