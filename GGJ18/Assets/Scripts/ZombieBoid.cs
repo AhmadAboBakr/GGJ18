@@ -17,8 +17,7 @@ public class ZombieBoid : MonoBehaviour {
         if (!manager)
         {
             manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<ZombieFlockManager>();
-
-
+            
             rigidBody = this.GetComponent<Rigidbody>();
             manager.followers.Add(this);
             maxSpeed += Random.Range(-5, 5f);
