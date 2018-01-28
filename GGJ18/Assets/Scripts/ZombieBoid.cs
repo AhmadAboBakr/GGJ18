@@ -11,13 +11,19 @@ public class ZombieBoid : MonoBehaviour {
     Rigidbody rigidBody;
     public float offset = 0;
     InceptionObject inceptionObject;
+    Animator animator;
     // Use this for initialization
     void Start () {
         rigidBody = this.GetComponent<Rigidbody>();
         manager.followers.Add(this);
         maxSpeed+= Random.Range(-5,5f);
         inceptionObject = this.GetComponent<InceptionObject>();
-	}
+        animator = this.GetComponentInChildren<Animator>();
+        rigidBody.freezeRotation = true;
+        inceptionObject.dead = false;
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -63,17 +69,20 @@ public class ZombieBoid : MonoBehaviour {
         this.inceptionObject.downVector = Vector3.down;
         this.inceptionObject.gravity = 3;
         this.enabled = false;
+        animator.enabled = false;
+        rigidBody.freezeRotation = false;
+        rigidBody.mass = 10000;
+        inceptionObject.dead = true;
+
     }
     private void FixedUpdate()
     {
         if (this.rigidBody.velocity.sqrMagnitude > maxSpeed)
         {
             rigidBody.velocity = rigidBody.velocity.normalized * maxSpeed;
+
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
+
 }

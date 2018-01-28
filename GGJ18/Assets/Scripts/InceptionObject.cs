@@ -10,6 +10,7 @@ public class InceptionObject : MonoBehaviour {
     public Vector3 downVector;
     public LayerMask layer;
     public bool grounded = false;
+    public bool dead;
     // Use this for initialization
 	void Start () {
         downVector = Vector3.down;
@@ -46,20 +47,23 @@ public class InceptionObject : MonoBehaviour {
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Ground"))
+        if (!dead)
         {
-            if (collision.collider.gameObject != lastOne)
+            if (collision.collider.CompareTag("Ground"))
             {
-                lastOne = collision.collider.gameObject;
-                downVector = -collision.collider.transform.up;
+                if (collision.collider.gameObject != lastOne)
+                {
+                    lastOne = collision.collider.gameObject;
+                    downVector = -collision.collider.transform.up;
 
-                this.transform.LookAt(collision.gameObject.transform.position, collision.transform.up);
+                    this.transform.LookAt(collision.gameObject.transform.position, collision.transform.up);
+                }
             }
-        }
-        else if(collision.collider.CompareTag("Bouncy"))
-        {
-            this.transform.forward = -this.transform.forward;
+            else if (collision.collider.CompareTag("Bouncy"))
+            {
+                this.transform.forward = -this.transform.forward;
 
+            }
         }
     }
 

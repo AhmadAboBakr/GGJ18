@@ -34,14 +34,4 @@ public class FlockQueen : MonoBehaviour {
             this.rigidBody.velocity = (this.transform.forward) * maxSpeed;
         }
     }
-    private void FixedUpdate()
-    {
-        //Vector2 xz = new Vector2(rigidBody.velocity.x, rigidBody.velocity.z);
-        //this.rigidBody.velocity = Vector3.ClampMagnitude(this.rigidBody.velocity,maxSpeed);
-    }
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.DrawLine(this.transform.position,this.transform.position+this.rigidBody.velocity);
-    //}
 }

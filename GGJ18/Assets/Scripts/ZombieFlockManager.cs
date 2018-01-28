@@ -9,7 +9,6 @@ public class ZombieFlockManager : MonoBehaviour {
     public GameObject queen;
     public float maxKillTimer=5;
     public float time=5;
-    // Use this for initialization
     void Awake() {
         followers = new List<ZombieBoid>();
 	}
@@ -35,14 +34,13 @@ public class ZombieFlockManager : MonoBehaviour {
         queen.name = "queen";
         flockQueen.maxSpeed = newQueen.maxSpeed;
         Destroy(newQueen);
-
     }
     IEnumerator KillAZombie()
     {
         while (followers.Count>0)
         {
             followers[Random.Range(0, followers.Count)].Kill();
-            yield return new WaitForSeconds(maxKillTimer/followers.Count);
+            yield return new WaitForSeconds(maxKillTimer/(followers.Count/10));
         }
         var io=queen.GetComponent<InceptionObject>(); ;
         var q = queen.GetComponent<FlockQueen>();
@@ -52,7 +50,4 @@ public class ZombieFlockManager : MonoBehaviour {
 
         ///TODO Game over
     }
-
-
-
 }
