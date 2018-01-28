@@ -37,10 +37,11 @@ public class ZombieFlockManager : MonoBehaviour {
     }
     IEnumerator KillAZombie()
     {
+        yield return new WaitForSeconds(maxKillTimer / (followers.Count));
         while (followers.Count>0)
         {
             followers[Random.Range(0, followers.Count)].Kill();
-            yield return new WaitForSeconds(maxKillTimer/(followers.Count/10));
+            yield return new WaitForSeconds(maxKillTimer/(followers.Count));
         }
         var io=queen.GetComponent<InceptionObject>(); ;
         var q = queen.GetComponent<FlockQueen>();

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3161cdac3b4bc4d429fb3a619cc587db
-timeCreated: 1517134264
+timeCreated: 1517138136
 licenseType: Free
 MonoImporter:
   externalObjects: {}
@@ -9,7 +9,7 @@ MonoImporter:
   - queenMaterial: {fileID: 2100000, guid: ab8606f706976844f86464330265b6df, type: 2}
   - zoombieMaterial: {fileID: 2100000, guid: 325856e1af7eb27499521f08a4966ded, type: 2}
   - queen: {instanceID: 0}
-  executionOrder: 100
+  executionOrder: 350
   icon: {fileID: -4087464717476244675, guid: 0000000000000000d000000000000000, type: 0}
   userData: 
   assetBundleName: 

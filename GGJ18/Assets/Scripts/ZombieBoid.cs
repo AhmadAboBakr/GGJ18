@@ -27,6 +27,7 @@ public class ZombieBoid : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+       
         var seek = manager.queen.transform.position - this.transform.position;
         var seperation = Seperate();
 
@@ -66,12 +67,15 @@ public class ZombieBoid : MonoBehaviour {
 
     public void Kill()
     {
+        this.gameObject.name = "deadZombie";
         this.inceptionObject.downVector = Vector3.down;
         this.inceptionObject.gravity = 3;
         this.enabled = false;
         animator.enabled = false;
         rigidBody.freezeRotation = false;
         rigidBody.mass = 10000;
+        rigidBody.drag = 5;
+        rigidBody.angularDrag = 5;
         inceptionObject.dead = true;
 
     }
