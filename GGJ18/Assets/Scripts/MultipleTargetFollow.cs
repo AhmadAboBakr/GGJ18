@@ -18,7 +18,7 @@ public class MultipleTargetFollow : MonoBehaviour {
     private void Start()
     {
         
-        startingPlayers = GameObject.FindGameObjectsWithTag("Player");
+        startingPlayers = GameObject.FindGameObjectsWithTag("Leader");
         
         for (int i = 0; i < startingPlayers.Length; i++)
         {

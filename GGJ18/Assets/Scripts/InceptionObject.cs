@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InceptionObject : MonoBehaviour {
+    public Transform startingPlane;
     public float gravity;
     GameObject lastOne;
     Rigidbody[] bodies;
@@ -17,7 +18,10 @@ public class InceptionObject : MonoBehaviour {
         bodies = this.GetComponentsInChildren<Rigidbody>();
         i = 0;
         body = this.GetComponent<Rigidbody>();
-        
+        if(startingPlane)
+        {
+            downVector = -startingPlane.up;
+        }
 	}
 
     void FixedUpdate()

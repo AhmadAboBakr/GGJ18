@@ -15,15 +15,19 @@ public class HumanBoid : MonoBehaviour {
     public float maxSpeed = 15;
     public float targetBias, separationBias, cohesionBias, alignmentBias, ArrivalBias;
     public float slowingRadius;
-
+    public Material zm;
     private void Start()
     {
-        
-        myRigidbody = this.GetComponent<Rigidbody>();
-        startingDirection = new Vector3(Random.Range(1, 3),0, Random.Range(1, 3));
-        //myRigidbody.velocity = startingDirection * speed;
-        maxSpeed += Random.Range(-5, 5);
-        manager.followers.Add(this);
+        if (!manager)
+        {
+            manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<HumanManager>();
+
+            myRigidbody = this.GetComponent<Rigidbody>();
+            startingDirection = new Vector3(Random.Range(1, 3), 0, Random.Range(1, 3));
+            //myRigidbody.velocity = startingDirection * speed;
+            maxSpeed += Random.Range(-5, 5);
+            manager.followers.Add(this);
+        }
     }
 
     private void FixedUpdate()
@@ -140,5 +144,34 @@ public class HumanBoid : MonoBehaviour {
         neighborCount = neighbors.Count;
     }
 
-   
+
+
+    //collision shit
+    bool flag = false;
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.CompareTag("Zombie") && !flag)
+        {
+            this.GetComponent<Collider>().gameObject.tag = "Zombie";
+            this.GetComponent<Collider>().gameObject.name = "ZombieNow";
+
+            print("col: " + col.gameObject.tag);
+
+            AddZombieComp();
+            flag = true;
+        }
+        
+    }
+    void AddZombieComp()
+    {
+        if (!this.GetComponent<ZombieBoid>())
+        {
+            this.gameObject.GetComponent<HumanBoid>().enabled = false;
+            ZombieBoid zombieScript = this.gameObject.AddComponent<ZombieBoid>();
+            zombieScript.enabled = true;
+            this.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = Resources.Load("zombie") as Material;
+        }
+    }
+
 }

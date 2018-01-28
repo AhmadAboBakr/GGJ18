@@ -14,19 +14,25 @@ public class ZombieBoid : MonoBehaviour {
     Animator animator;
     // Use this for initialization
     void Start () {
-        rigidBody = this.GetComponent<Rigidbody>();
-        manager.followers.Add(this);
-        maxSpeed+= Random.Range(-5,5f);
-        inceptionObject = this.GetComponent<InceptionObject>();
-        animator = this.GetComponentInChildren<Animator>();
-        rigidBody.freezeRotation = true;
-        inceptionObject.dead = false;
+        if (!manager)
+        {
+            manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<ZombieFlockManager>();
+            
+            rigidBody = this.GetComponent<Rigidbody>();
+            manager.followers.Add(this);
+            maxSpeed += Random.Range(-5, 5f);
+            inceptionObject = this.GetComponent<InceptionObject>();
+            animator = this.GetComponentInChildren<Animator>();
+            rigidBody.freezeRotation = true;
+            inceptionObject.dead = false;
+        }
 
 
     }
 	
 	// Update is called once per frame
 	void Update () {
+       
         var seek = manager.queen.transform.position - this.transform.position;
         var seperation = Seperate();
 
@@ -66,12 +72,17 @@ public class ZombieBoid : MonoBehaviour {
 
     public void Kill()
     {
+        this.gameObject.name = "deadZombie";
         this.inceptionObject.downVector = Vector3.down;
         this.inceptionObject.gravity = 3;
         this.enabled = false;
         animator.enabled = false;
         rigidBody.freezeRotation = false;
         rigidBody.mass = 10000;
+        rigidBody.drag = 5;
+        rigidBody.angularDrag = 5;
+        this.gameObject.tag = "dead";   
+        
         inceptionObject.dead = true;
 
     }

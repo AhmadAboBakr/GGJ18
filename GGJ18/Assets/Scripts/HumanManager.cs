@@ -24,6 +24,7 @@ public class HumanManager : MonoBehaviour {
         var groupLeader = leader.AddComponent<HumanLeader>();
         leader.GetComponentInChildren<SkinnedMeshRenderer>().material = leaderMaterial;
         leader.name = "Leader";
+        leader.tag = "Leader";
         groupLeader.maxSpeed = newLeader.maxSpeed;
         Destroy(newLeader);
 

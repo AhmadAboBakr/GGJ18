@@ -71,11 +71,7 @@ GameObject:
   - component: {fileID: 54676499973535108}
   - component: {fileID: 135764434121141606}
   - component: {fileID: 114192875873190814}
-  - component: {fileID: 135663531023209424}
-  - component: {fileID: 135423111673873392}
   - component: {fileID: 65885254164192684}
-  - component: {fileID: 135746469169489322}
-  - component: {fileID: 135173091429046580}
   - component: {fileID: 114155273789004458}
   m_Layer: 0
   m_Name: Basic Character
@@ -1248,54 +1244,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   grounded: 0
---- !u!135 &135173091429046580
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1057895856834174}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 6
-  m_Center: {x: 0, y: 1.77, z: 0}
---- !u!135 &135423111673873392
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1057895856834174}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 6
-  m_Center: {x: 0, y: 1.77, z: 0}
---- !u!135 &135663531023209424
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1057895856834174}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 6
-  m_Center: {x: 0, y: 1.77, z: 0}
---- !u!135 &135746469169489322
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1057895856834174}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 6
-  m_Center: {x: 0, y: 1.77, z: 0}
+  dead: 0
 --- !u!135 &135764434121141606
 SphereCollider:
   m_ObjectHideFlags: 1

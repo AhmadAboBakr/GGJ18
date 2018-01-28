@@ -32,15 +32,19 @@ public class ZombieFlockManager : MonoBehaviour {
         var flockQueen=queen.AddComponent<FlockQueen>();
         queen.GetComponentInChildren<SkinnedMeshRenderer>().material = queenMaterial;
         queen.name = "queen";
+        queen.tag = "Leader";
         flockQueen.maxSpeed = newQueen.maxSpeed;
         Destroy(newQueen);
     }
     IEnumerator KillAZombie()
     {
+        yield return new WaitForSeconds(maxKillTimer / (followers.Count));
         while (followers.Count>0)
         {
-            followers[Random.Range(0, followers.Count)].Kill();
-            yield return new WaitForSeconds(maxKillTimer/(followers.Count/10));
+            int r = Random.Range(0, followers.Count);
+            followers[r].Kill();
+            followers.RemoveAt(r);
+            yield return new WaitForSeconds(maxKillTimer/(followers.Count));
         }
         var io=queen.GetComponent<InceptionObject>(); ;
         var q = queen.GetComponent<FlockQueen>();
